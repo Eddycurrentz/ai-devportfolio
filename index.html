@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Edwin E Binu — Data Scientist &amp; AI Engineer Portfolio</title>
+<meta name="description" content="Portfolio of Edwin E Binu (Eddycurrentz) — Data Scientist, AI/ML Engineer and full-stack developer specializing in machine learning pipelines, big-data streaming systems and applied AI. Full-stack developer portfolio, Claude Code portfolio, developer portfolio." />
+<meta name="keywords" content="Edwin E Binu, Eddycurrentz, data scientist portfolio, AI engineer portfolio, developer portfolio, full-stack developer portfolio, Claude Code portfolio, machine learning engineer, Apache Spark, Apache Kafka" />
+<meta name="author" content="Edwin E Binu" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Edwin E Binu — Data Scientist & AI Engineer" />
+<meta property="og:description" content="Machine learning, big-data streaming and applied AI projects by Edwin E Binu (Eddycurrentz)." />
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/161237423?v=4" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23FF8A3D' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%2334E4C8' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   Theme: "Eddy Current" — a nod to the handle Eddycurrentz.
+   An eddy current is a looping electrical current induced by a
+   changing magnetic field — visualized here as concentric rings.
+   It also doubles as a metaphor for streaming data (his real
+   specialty: Kafka / Spark pipelines): signals moving in loops.
+   ============================================================ */
+:root{
+  --bg:            #0B0F14;
+  --bg-panel:      #121821;
+  --bg-panel-2:    #161D28;
+  --line:          #232B38;
+  --text:          #E8EDF2;
+  --text-muted:    #8A96A8;
+  --text-faint:    #57647A;
+  --copper:        #FF8A3D;
+  --copper-dim:    #C9692A;
+  --teal:          #34E4C8;
+  --teal-dim:      #1E9C88;
+  --danger:        #FF6B6B;
+
+  --font-display:  'JetBrains Mono', monospace;
+  --font-body:     'Inter', system-ui, sans-serif;
+  --font-mono:     'IBM Plex Mono', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+
+  --maxw: 1180px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; }
+button{ font:inherit; }
+
+/* subtle background grid + noise so panels don't float on flat black */
+body{
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(255,138,61,0.07), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(52,228,200,0.06), transparent 45%),
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: auto, auto, 42px 42px, 42px 42px;
+  background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+}
+@media (max-width: 640px){
+  body{ background-size: auto, auto, 28px 28px, 28px 28px; }
+}
+
+.wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+.skip-link{
+  position:absolute; left:-9999px; top:0; background:var(--copper); color:#0B0F14;
+  padding:0.75rem 1.25rem; z-index:200; font-family:var(--font-mono); font-weight:600;
+  border-radius:0 0 var(--radius-sm) 0;
+}
+.skip-link:focus{ left:0; }
+
+:focus-visible{ outline:2px solid var(--copper); outline-offset:3px; border-radius:4px; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.site-nav{
+  position:sticky; top:0; z-index:100;
+  background:rgba(11,15,20,0.82);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter);
+  display:flex; align-items:center; justify-content:space-between; height:64px;
+}
+.nav-brand{
+  font-family:var(--font-display); font-weight:700; font-size:1rem; letter-spacing:0.02em;
+  text-decoration:none; display:flex; align-items:center; gap:0.55rem; color:var(--text);
+}
+.nav-brand .dot{ color:var(--copper); }
+.nav-links{
+  display:flex; gap:2rem; list-style:none; margin:0; padding:0;
+  font-family:var(--font-mono); font-size:0.85rem;
+}
+.nav-links a{
+  text-decoration:none; color:var(--text-muted); position:relative; padding:0.3rem 0;
+  transition:color 0.15s ease;
+}
+.nav-links a:hover, .nav-links a:focus-visible{ color:var(--teal); }
+.nav-links a::before{ content:'/ '; color:var(--copper-dim); }
+
+.nav-toggle{
+  display:none; background:none; border:1px solid var(--line); border-radius:var(--radius-sm);
+  color:var(--text); width:42px; height:38px; align-items:center; justify-content:center; cursor:pointer;
+}
+.nav-toggle svg{ width:20px; height:20px; }
+
+@media (max-width: 820px){
+  .nav-links{
+    position:fixed; inset:64px 0 0 0; height:calc(100vh - 64px);
+    flex-direction:column; gap:0; background:var(--bg);
+    padding:1rem var(--gutter); font-size:1.1rem;
+    transform:translateX(100%); transition:transform 0.25s ease;
+    overflow-y:auto;
+  }
+  .nav-links[data-open="true"]{ transform:translateX(0); }
+  .nav-links li{ border-bottom:1px solid var(--line); }
+  .nav-links a{ display:block; padding:1rem 0; }
+  .nav-toggle{ display:inline-flex; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4rem);
+  position:relative; overflow:hidden;
+}
+.hero-grid{
+  display:grid; grid-template-columns: 1.15fr 0.85fr; gap:clamp(2rem, 5vw, 4rem);
+  align-items:center;
+}
+@media (max-width: 900px){ .hero-grid{ grid-template-columns:1fr; } }
+
+.eyebrow{
+  font-family:var(--font-mono); font-size:0.8rem; color:var(--teal);
+  letter-spacing:0.08em; text-transform:uppercase; display:flex; align-items:center; gap:0.6rem;
+  margin-bottom:1.1rem;
+}
+.eyebrow::before{
+  content:''; width:8px; height:8px; border-radius:50%; background:var(--teal);
+  box-shadow:0 0 0 4px rgba(52,228,200,0.15);
+}
+
+.hero h1{
+  font-family:var(--font-display); font-weight:800; margin:0 0 0.9rem;
+  font-size:clamp(2.1rem, 5.4vw, 3.6rem); line-height:1.08; letter-spacing:-0.01em;
+}
+.hero h1 .accent{ color:var(--copper); }
+
+.type-line{
+  font-family:var(--font-mono); font-size:clamp(1.05rem, 2.4vw, 1.4rem); color:var(--text-muted);
+  min-height:2.2em; display:flex; align-items:center; margin-bottom:1.4rem;
+}
+.type-line .caret{
+  display:inline-block; width:2px; height:1.1em; background:var(--copper); margin-left:2px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+
+.hero p.lede{ color:var(--text-muted); max-width:52ch; font-size:1.02rem; margin-bottom:1.9rem; }
+
+.cta-row{ display:flex; gap:0.9rem; flex-wrap:wrap; margin-bottom:1.9rem; }
+.btn{
+  font-family:var(--font-mono); font-size:0.88rem; font-weight:600;
+  padding:0.85rem 1.4rem; border-radius:var(--radius-sm); text-decoration:none;
+  display:inline-flex; align-items:center; gap:0.5rem; cursor:pointer; border:1px solid transparent;
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color .15s ease;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn-primary{ background:var(--copper); color:#0B0F14; }
+.btn-primary:hover{ box-shadow:0 8px 24px -8px rgba(255,138,61,0.55); }
+.btn-ghost{ background:transparent; color:var(--text); border-color:var(--line); }
+.btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+.social-row{ display:flex; gap:0.9rem; }
+.social-row a{
+  width:40px; height:40px; border:1px solid var(--line); border-radius:var(--radius-sm);
+  display:flex; align-items:center; justify-content:center; text-decoration:none; color:var(--text-muted);
+  transition:border-color .15s ease, color .15s ease, transform .15s ease;
+}
+.social-row a:hover{ border-color:var(--copper); color:var(--copper); transform:translateY(-2px); }
+.social-row svg{ width:18px; height:18px; }
+
+/* terminal card */
+.terminal{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-lg);
+  overflow:hidden; box-shadow:0 24px 60px -30px rgba(0,0,0,0.7);
+  position:relative;
+}
+.terminal-bar{
+  display:flex; align-items:center; gap:0.5rem; padding:0.7rem 0.9rem; background:var(--bg-panel-2);
+  border-bottom:1px solid var(--line); font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);
+}
+.terminal-bar .tdot{ width:10px; height:10px; border-radius:50%; }
+.terminal-bar .tdot:nth-child(1){ background:#FF6B6B; }
+.terminal-bar .tdot:nth-child(2){ background:#FFC857; }
+.terminal-bar .tdot:nth-child(3){ background:#34E4C8; }
+.terminal-bar .tfile{ margin-left:0.5rem; }
+.terminal pre{
+  margin:0; padding:1.3rem 1.25rem; font-family:var(--font-mono); font-size:0.83rem; line-height:1.7;
+  color:var(--text); overflow-x:auto;
+}
+.terminal .c-key{ color:var(--copper); }
+.terminal .c-str{ color:var(--teal); }
+.terminal .c-com{ color:var(--text-faint); }
+.terminal .c-fn{ color:#8FB8FF; }
+
+/* eddy current rings decoration */
+.eddy-rings{
+  position:absolute; right:-60px; top:-60px; width:280px; height:280px; z-index:-1; opacity:0.5;
+  pointer-events:none;
+}
+.eddy-rings circle{ animation: spin 22s linear infinite; transform-origin:center; }
+.eddy-rings circle:nth-child(2){ animation-duration:16s; animation-direction:reverse; }
+.eddy-rings circle:nth-child(3){ animation-duration:30s; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+/* ============================================================
+   SECTION SCAFFOLDING
+   ============================================================ */
+section{ padding-block: clamp(3rem, 7vw, 5.5rem); }
+section + section{ border-top:1px solid var(--line); }
+
+.section-head{ margin-bottom:2.6rem; max-width:62ch; }
+.section-kicker{
+  font-family:var(--font-mono); font-size:0.78rem; color:var(--copper);
+  text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.6rem; display:block;
+}
+.section-head h2{
+  font-family:var(--font-display); font-size:clamp(1.6rem, 3.4vw, 2.3rem); margin:0 0 0.7rem; letter-spacing:-0.01em;
+}
+.section-head p{ color:var(--text-muted); margin:0; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:clamp(2rem,5vw,3.5rem); align-items:start; }
+@media (max-width:880px){ .about-grid{ grid-template-columns:1fr; } }
+.about-copy p{ color:var(--text-muted); }
+.about-copy strong{ color:var(--text); }
+
+.fact-box{
+  margin-top:1.5rem; padding:1rem 1.2rem; border-left:3px solid var(--teal);
+  background:var(--bg-panel); border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  font-family:var(--font-mono); font-size:0.88rem; color:var(--text-muted);
+}
+.fact-box b{ color:var(--teal); }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.6rem; }
+.stat-card{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:1.1rem 1.2rem;
+}
+.stat-card .num{ font-family:var(--font-display); font-size:1.7rem; color:var(--copper); font-weight:700; }
+.stat-card .lbl{ font-size:0.82rem; color:var(--text-muted); margin-top:0.2rem; }
+
+.stack-cloud{
+  display:flex; flex-wrap:wrap; gap:0.55rem; margin-top:1.4rem;
+}
+.stack-pill{
+  font-family:var(--font-mono); font-size:0.78rem; padding:0.45rem 0.8rem; border-radius:100px;
+  border:1px solid var(--line); color:var(--text-muted); background:var(--bg-panel);
+}
+
+/* ============================================================
+   SKILLS — icon grid, no progress bars
+   ============================================================ */
+.skills-cats{ display:flex; flex-direction:column; gap:2.4rem; }
+.skill-cat-head{
+  display:flex; align-items:baseline; gap:0.7rem; margin-bottom:1rem;
+  font-family:var(--font-mono);
+}
+.skill-cat-head h3{ font-size:1.02rem; margin:0; color:var(--text); }
+.skill-cat-head .n{ color:var(--text-faint); font-size:0.78rem; }
+
+.skill-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(128px,1fr)); gap:0.9rem;
+}
+.skill-chip{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:1rem 0.8rem; text-align:center; transition:border-color .15s ease, transform .15s ease;
+}
+.skill-chip:hover{ border-color:var(--copper); transform:translateY(-3px); }
+.skill-chip .ic{
+  width:30px; height:30px; margin:0 auto 0.6rem; display:flex; align-items:center; justify-content:center;
+  color:var(--teal); font-family:var(--font-display); font-weight:700; font-size:0.95rem;
+}
+.skill-chip .lbl{ font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono); }
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.project-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 1fr)); gap:1.6rem;
+}
+.project-card{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-lg);
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:transform 0.2s ease, box-shadow 0.2s ease, border-color .2s ease;
+}
+.project-card:hover, .project-card:focus-within{
+  transform:translateY(-6px); border-color:var(--copper-dim);
+  box-shadow:0 26px 50px -26px rgba(0,0,0,0.65);
+}
+.project-media{
+  aspect-ratio:16/10; background:
+    linear-gradient(135deg, var(--bg-panel-2), var(--bg));
+  position:relative; display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid var(--line); overflow:hidden;
+}
+.project-media svg{ width:64%; height:64%; opacity:0.9; }
+.project-body{ padding:1.3rem 1.35rem 1.5rem; display:flex; flex-direction:column; gap:0.7rem; flex:1; }
+.project-title-row{ display:flex; align-items:center; justify-content:space-between; gap:0.6rem; }
+.project-body h3{ font-family:var(--font-display); font-size:1.08rem; margin:0; }
+.stars{
+  display:flex; align-items:center; gap:0.3rem; font-family:var(--font-mono); font-size:0.78rem;
+  color:var(--text-faint);
+}
+.stars svg{ width:14px; height:14px; fill:var(--copper); }
+.project-body p.desc{ color:var(--text-muted); font-size:0.92rem; margin:0; }
+.project-outcome{
+  font-family:var(--font-mono); font-size:0.8rem; color:var(--teal); margin:0;
+}
+.project-outcome::before{ content:'→ '; color:var(--copper); }
+.tag-row{ display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.2rem; }
+.tag{
+  font-family:var(--font-mono); font-size:0.72rem; padding:0.28rem 0.55rem; border-radius:100px;
+  border:1px solid var(--line); color:var(--text-muted);
+}
+.project-links{
+  margin-top:auto; display:flex; gap:0.7rem; flex-wrap:wrap; padding-top:0.8rem; border-top:1px dashed var(--line);
+}
+.link-btn{
+  font-family:var(--font-mono); font-size:0.78rem; text-decoration:none; color:var(--text-muted);
+  display:inline-flex; align-items:center; gap:0.35rem; border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:0.45rem 0.7rem; background:none; cursor:pointer; transition:color .15s ease, border-color .15s ease;
+}
+.link-btn:hover, .link-btn:focus-visible{ color:var(--teal); border-color:var(--teal); }
+.link-btn svg{ width:14px; height:14px; }
+
+.project-card.placeholder{
+  border-style:dashed; align-items:center; justify-content:center; text-align:center;
+  color:var(--text-faint);
+}
+.project-card.placeholder .project-body{ align-items:center; justify-content:center; }
+
+/* ============================================================
+   CASE STUDY MODAL
+   ============================================================ */
+.cs-backdrop{
+  position:fixed; inset:0; background:rgba(5,7,10,0.78); backdrop-filter:blur(4px);
+  display:none; align-items:flex-start; justify-content:center; z-index:300; padding:4vh 1rem;
+  overflow-y:auto;
+}
+.cs-backdrop[data-open="true"]{ display:flex; }
+.cs-modal{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-lg);
+  max-width:780px; width:100%; padding:0; margin-block:auto;
+  box-shadow:0 40px 100px -30px rgba(0,0,0,0.8);
+}
+.cs-head{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;
+  padding:1.6rem 1.8rem 1rem; border-bottom:1px solid var(--line);
+}
+.cs-head h3{ font-family:var(--font-display); font-size:1.3rem; margin:0 0 0.3rem; }
+.cs-head .cs-sub{ color:var(--text-muted); font-size:0.88rem; font-family:var(--font-mono); }
+.cs-close{
+  background:none; border:1px solid var(--line); border-radius:var(--radius-sm); width:36px; height:36px;
+  color:var(--text-muted); cursor:pointer; flex-shrink:0;
+}
+.cs-close:hover{ color:var(--danger); border-color:var(--danger); }
+.cs-body{ padding:1.4rem 1.8rem 1.9rem; display:flex; flex-direction:column; gap:1.4rem; }
+.cs-block h4{
+  font-family:var(--font-mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--copper); margin:0 0 0.5rem;
+}
+.cs-block p, .cs-block li{ color:var(--text-muted); font-size:0.94rem; margin:0; }
+.cs-block ul{ padding-left:1.1rem; margin:0; display:flex; flex-direction:column; gap:0.4rem; }
+.cs-diagram{
+  border:1px dashed var(--line); border-radius:var(--radius-md); padding:1.2rem;
+  display:flex; align-items:center; justify-content:center; background:var(--bg);
+}
+.cs-diagram svg{ width:100%; height:auto; max-width:520px; }
+.cs-links{ display:flex; gap:0.7rem; flex-wrap:wrap; }
+
+/* ============================================================
+   OPEN SOURCE
+   ============================================================ */
+.oss-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(2rem,5vw,3rem); align-items:start; }
+@media (max-width:880px){ .oss-grid{ grid-template-columns:1fr; } }
+.contrib-card{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-lg); padding:1.3rem; overflow-x:auto;
+}
+.contrib-card img{ width:100%; min-width:520px; border-radius:var(--radius-sm); }
+.contrib-caption{ font-family:var(--font-mono); font-size:0.78rem; color:var(--text-faint); margin-top:0.8rem; }
+
+.oss-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1rem; }
+.oss-list li{
+  display:flex; gap:0.9rem; padding:1rem; border:1px solid var(--line); border-radius:var(--radius-md); background:var(--bg-panel);
+}
+.oss-ic{ color:var(--teal); flex-shrink:0; margin-top:0.15rem; }
+.oss-ic svg{ width:20px; height:20px; }
+.oss-list h4{ margin:0 0 0.25rem; font-family:var(--font-mono); font-size:0.92rem; }
+.oss-list p{ margin:0; color:var(--text-muted); font-size:0.85rem; }
+
+/* ============================================================
+   WRITING (optional)
+   ============================================================ */
+.write-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.4rem; }
+.write-card{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:1.2rem; display:flex; flex-direction:column; gap:0.6rem; text-decoration:none; color:inherit;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.write-card:hover{ border-color:var(--teal); transform:translateY(-3px); }
+.write-meta{ font-family:var(--font-mono); font-size:0.74rem; color:var(--text-faint); display:flex; gap:0.7rem; }
+.write-card h4{ margin:0; font-size:1rem; }
+.write-card p{ margin:0; color:var(--text-muted); font-size:0.86rem; }
+
+/* ============================================================
+   EXPERIENCE TIMELINE
+   ============================================================ */
+.timeline{ position:relative; padding-left:2.1rem; }
+.timeline::before{
+  content:''; position:absolute; left:6px; top:6px; bottom:6px; width:2px;
+  background:linear-gradient(var(--copper), var(--teal));
+}
+.tl-item{ position:relative; padding-bottom:2.2rem; }
+.tl-item:last-child{ padding-bottom:0; }
+.tl-item::before{
+  content:''; position:absolute; left:-2.1rem; top:0.35rem; width:14px; height:14px; border-radius:50%;
+  background:var(--bg); border:2px solid var(--copper);
+}
+.tl-role-row{ display:flex; flex-wrap:wrap; align-items:baseline; gap:0.6rem; margin-bottom:0.3rem; }
+.tl-item h3{ font-family:var(--font-display); font-size:1.05rem; margin:0; }
+.tl-dates{ font-family:var(--font-mono); font-size:0.78rem; color:var(--text-faint); }
+.tl-org{ color:var(--copper); font-size:0.88rem; margin:0 0 0.5rem; font-family:var(--font-mono); }
+.tl-item p.desc{ color:var(--text-muted); margin:0 0 0.6rem; max-width:62ch; }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(2rem,5vw,3.5rem); align-items:start; }
+@media (max-width:880px){ .contact-grid{ grid-template-columns:1fr; } }
+.contact-email{
+  display:inline-flex; align-items:center; gap:0.6rem; font-family:var(--font-mono);
+  font-size:1.05rem; color:var(--copper); text-decoration:none; margin:1rem 0 1.4rem; word-break:break-all;
+}
+.contact-email svg{ width:18px; height:18px; flex-shrink:0; }
+.response-note{
+  font-family:var(--font-mono); font-size:0.82rem; color:var(--text-muted);
+  border-left:3px solid var(--teal); padding-left:0.9rem;
+}
+.avail-tags{ display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:1.4rem; }
+.avail-tags span{
+  font-family:var(--font-mono); font-size:0.76rem; padding:0.4rem 0.75rem; border-radius:100px;
+  border:1px solid var(--teal-dim); color:var(--teal);
+}
+
+form.contact-form{ display:flex; flex-direction:column; gap:1.1rem; }
+.field{ display:flex; flex-direction:column; gap:0.4rem; }
+.field label{ font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); }
+.field input, .field textarea{
+  background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:0.8rem 0.9rem; color:var(--text); font-family:var(--font-body); font-size:0.95rem;
+  resize:vertical;
+}
+.field input:focus, .field textarea:focus{ border-color:var(--copper); outline:none; }
+.form-note{ font-size:0.78rem; color:var(--text-faint); font-family:var(--font-mono); }
+.form-status{ font-family:var(--font-mono); font-size:0.85rem; min-height:1.2em; }
+.form-status[data-state="ok"]{ color:var(--teal); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  border-top:1px solid var(--line); padding-block:2.4rem; text-align:center;
+  font-family:var(--font-mono); font-size:0.78rem; color:var(--text-faint);
+}
+footer a{ color:var(--text-muted); text-decoration:none; }
+footer a:hover{ color:var(--copper); }
+.footer-links{ display:flex; gap:1rem; justify-content:center; margin-top:0.7rem; flex-wrap:wrap; }
+
+.visually-hidden{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================================================
+     NAV — Reusable <SiteNav> component in a component-based build.
+     ============================================================ -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand"><span class="dot">◎</span> edwin&nbsp;e&nbsp;binu<span style="color:var(--text-faint)">.dev</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks" data-open="false">
+        <li><a href="#about">about</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#opensource">open-source</a></li>
+        <li><a href="#writing">writing</a></li>
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section class="hero" id="top" aria-label="Introduction">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Available for freelance &amp; full-time roles</p>
+        <h1>Hi, I'm <span class="accent">Edwin&nbsp;E&nbsp;Binu</span><br>a.k.a. Eddycurrentz</h1>
+        <p class="type-line"><span id="typeTarget">Data Scientist</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="lede">I build machine-learning systems and real-time data pipelines — from Spark &amp; Kafka streaming jobs to the applied AI products they power. Straightforward, direct, and pragmatic in data, code, and life.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="/resume.pdf" download>Download Resume</a>
+        </div>
+        <div class="social-row" aria-label="Social links">
+          <a href="https://github.com/Eddycurrentz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.39-5.26 5.67.41.36.78 1.07.78 2.16v3.2c0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/eddycurrentz" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.15 1.45-2.15 2.94v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+          </a>
+          <a href="https://leetcode.com/edwin_emmanuel07" target="_blank" rel="noopener noreferrer" aria-label="LeetCode profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48.5a1.5 1.5 0 0 0-1.06.44L4.06 9.3a3.5 3.5 0 0 0 0 4.95l6.65 6.65a3.5 3.5 0 0 0 4.95 0l2.2-2.2a1.5 1.5 0 1 0-2.12-2.13l-2.2 2.2a.5.5 0 0 1-.7 0l-6.66-6.65a.5.5 0 0 1 0-.7l6.65-6.66a.5.5 0 0 1 .7 0l2.2 2.2a1.5 1.5 0 1 0 2.13-2.12L15.7 2.5A3.47 3.47 0 0 0 13.48.5Zm2.9 8.5a1.5 1.5 0 0 0 0 3h5.12a1.5 1.5 0 0 0 0-3H16.4Z"/></svg>
+          </a>
+          <a href="mailto:edwinebinu07@gmail.com" aria-label="Send an email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="terminal" role="img" aria-label="Terminal window showing a code snippet describing Edwin's current role">
+        <svg class="eddy-rings" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="var(--copper)" stroke-width="1.4" stroke-dasharray="4 8"/>
+          <circle cx="100" cy="100" r="62" fill="none" stroke="var(--teal)" stroke-width="1.4" stroke-dasharray="3 7"/>
+          <circle cx="100" cy="100" r="34" fill="none" stroke="var(--copper)" stroke-width="1.4" stroke-dasharray="2 6"/>
+        </svg>
+        <div class="terminal-bar">
+          <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+          <span class="tfile">current_focus.py</span>
+        </div>
+        <pre><span class="c-com"># whoami</span>
+<span class="c-key">class</span> <span class="c-fn">Engineer</span>:
+    name = <span class="c-str">"Edwin E Binu"</span>
+    roles = [<span class="c-str">"Data Scientist"</span>, <span class="c-str">"AI Engineer"</span>]
+    focus = [
+        <span class="c-str">"ML pipelines"</span>,
+        <span class="c-str">"Apache Spark"</span>,
+        <span class="c-str">"Kafka streaming"</span>,
+    ]
+
+    <span class="c-key">def</span> <span class="c-fn">ask_me_about</span>(self):
+        <span class="c-key">return</span> <span class="c-str">"AI/ML, big data, problem solving"</span>
+
+<span class="c-com">&gt;&gt;&gt; Engineer().ask_me_about()</span>
+<span class="c-str">'AI/ML, big data, problem solving'</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. ABOUT
+       ============================================================ -->
+  <section id="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="section-kicker">01 · About</span>
+        <h2 id="about-h">Making sense of data at scale</h2>
+        <p>I'm a data scientist and AI engineer focused on <strong>machine learning algorithms, distributed big-data pipelines, and real-time streaming systems</strong>. Most of my recent work sits at the intersection of applied ML and the infrastructure that keeps it fed — building and tuning pipelines with Apache Spark and Kafka, then wiring the results into products people actually use.</p>
+        <p>Currently: <strong>independent projects &amp; open-source work</strong> — <em>replace with your current company/role, e.g. "Data Scientist @ [Company]".</em> Presently deepening my knowledge of scalable data management and deep-learning architectures.</p>
+        <div class="fact-box">⚡ <b>Fun fact:</b> Straightforward, direct, and pragmatic — in data, code, and life. My GitHub handle "Eddycurrentz" is a nod to eddy currents: loops of signal induced by change, which is basically what a streaming pipeline is.</div>
+        <div class="stack-cloud" aria-label="Primary tech stack">
+          <span class="stack-pill">Python</span><span class="stack-pill">Apache Spark</span><span class="stack-pill">Kafka</span>
+          <span class="stack-pill">Hadoop</span><span class="stack-pill">Pandas</span><span class="stack-pill">React</span>
+          <span class="stack-pill">Next.js</span><span class="stack-pill">Flask</span><span class="stack-pill">MySQL</span>
+        </div>
+      </div>
+      <div>
+        <div class="stat-grid" aria-label="Career stats">
+          <div class="stat-card"><div class="num">29</div><div class="lbl">public repositories</div></div>
+          <div class="stat-card"><div class="num">3+</div><div class="lbl">years writing code</div></div>
+          <div class="stat-card"><div class="num">90%</div><div class="lbl">self-rated AI/ML proficiency</div></div>
+          <div class="stat-card"><div class="num">4</div><div class="lbl">core data platforms<br><span style="font-size:.7em">Spark · Kafka · Hadoop · SQL</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. SKILLS — icon grid, categorized, no progress bars
+       ============================================================ -->
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">02 · Skills</span>
+        <h2 id="skills-h">Tools of the trade</h2>
+        <p>Organized by where they show up in the stack — from model training to the interfaces that surface it.</p>
+      </div>
+      <div class="skills-cats" id="skillsCats"><!-- populated by JS from SKILLS data --></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. PROJECTS — reusable <ProjectGrid> / <ProjectCard>
+       ============================================================ -->
+  <section id="projects" aria-labelledby="projects-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">03 · Selected Work</span>
+        <h2 id="projects-h">Featured projects</h2>
+        <p>Open the case study on any project for the fuller problem → approach → result writeup.</p>
+      </div>
+      <div class="project-grid" id="projectGrid"><!-- populated by JS from PROJECTS data --></div>
+    </div>
+  </section>
+
+  <!-- Case study modal (shared, populated per-project) -->
+  <div class="cs-backdrop" id="csBackdrop" role="dialog" aria-modal="true" aria-labelledby="csTitle">
+    <div class="cs-modal">
+      <div class="cs-head">
+        <div>
+          <h3 id="csTitle"></h3>
+          <p class="cs-sub" id="csSub"></p>
+        </div>
+        <button class="cs-close" id="csClose" aria-label="Close case study">✕</button>
+      </div>
+      <div class="cs-body" id="csBody"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       5. OPEN SOURCE
+       ============================================================ -->
+  <section id="opensource" aria-labelledby="oss-h">
+    <div class="wrap oss-grid">
+      <div>
+        <span class="section-kicker">04 · Open Source</span>
+        <h2 id="oss-h">Building in public</h2>
+        <p style="color:var(--text-muted); margin-top:0;">A rolling log of commits across data-science, AI and web repos.</p>
+        <div class="contrib-card">
+          <img src="https://ghchart.rshah.org/FF8A3D/Eddycurrentz" alt="GitHub contribution graph for Eddycurrentz, showing daily commit activity over the past year" loading="lazy">
+          <p class="contrib-caption">Live contribution graph, pulled from github.com/Eddycurrentz</p>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-mono); font-size:0.95rem; color:var(--text-muted); margin-top:0;">Notable contributions</h3>
+        <ul class="oss-list">
+          <li>
+            <span class="oss-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+            <div><h4>CIT-project</h4><p>Exploratory data analysis of COVID-19 case data — from raw cleaning to trend visualization. <em>[link your write-up or notebook]</em></p></div>
+          </li>
+          <li>
+            <span class="oss-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><h4>Daily data-science practice</h4><p>A running series of mini-projects (day5, day-7-idra …) used to drill EDA, modeling and notebook workflows.</p></div>
+          </li>
+          <li>
+            <span class="oss-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg></span>
+            <div><h4>ai-student-counsellor</h4><p>Prototype for an AI-assisted student guidance tool. <em>[add PR/issue links to open-source repos you've contributed to]</em></p></div>
+          </li>
+        </ul>
+        <a class="btn btn-ghost" style="margin-top:1.4rem;" href="https://github.com/Eddycurrentz" target="_blank" rel="noopener noreferrer">View GitHub Profile →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. WRITING (optional — remove this <section> if unused)
+       ============================================================ -->
+  <section id="writing" aria-labelledby="writing-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">05 · Writing</span>
+        <h2 id="writing-h">Notes &amp; articles</h2>
+        <p>Occasional write-ups on ML pipelines, streaming systems and things I learn the hard way. <em>Placeholder cards below — link your dev.to / Medium / blog posts.</em></p>
+      </div>
+      <div class="write-grid">
+        <a class="write-card" href="#" onclick="return false;">
+          <div class="write-meta"><span>Add date</span><span>· 6 min read</span></div>
+          <h4>Designing a Kafka topic layout for streaming ML features</h4>
+          <p>Notes on partitioning strategy and schema evolution for a real-time feature pipeline.</p>
+        </a>
+        <a class="write-card" href="#" onclick="return false;">
+          <div class="write-meta"><span>Add date</span><span>· 4 min read</span></div>
+          <h4>What I learned cleaning a messy COVID-19 dataset</h4>
+          <p>A walkthrough of the EDA decisions behind the CIT-project analysis.</p>
+        </a>
+        <a class="write-card" href="#" onclick="return false;">
+          <div class="write-meta"><span>Add date</span><span>· 5 min read</span></div>
+          <h4>Spark MLlib vs. scikit-learn: when the switch is worth it</h4>
+          <p>A practical comparison from a few pipelines that outgrew a single machine.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. EXPERIENCE TIMELINE
+       ============================================================ -->
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">06 · Experience</span>
+        <h2 id="exp-h">Where I've worked</h2>
+        <p>Timeline data lives in one array — add roles as they happen.</p>
+      </div>
+      <div class="timeline" id="timeline"><!-- populated by JS from EXPERIENCE data --></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. CONTACT
+       ============================================================ -->
+  <section id="contact" aria-labelledby="contact-h">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="section-kicker">07 · Contact</span>
+        <h2 id="contact-h">Interested in working together?</h2>
+        <p style="color:var(--text-muted);">Open to full-time roles, freelance data/ML engagements, and short consulting projects around data pipelines and applied AI.</p>
+        <a class="contact-email" href="mailto:edwinebinu07@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+          edwinebinu07@gmail.com
+        </a>
+        <p class="response-note">Typical response time: within 1–2 business days.</p>
+        <div class="avail-tags">
+          <span>Freelance</span><span>Full-time</span><span>Consulting</span>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" id="contactForm" aria-describedby="formNote">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" style="align-self:flex-start;">Send message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form-note" id="formNote">Demo form — wire this up to an API route, Formspree, or your email provider of choice before deploying (see implementation notes).</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="year"></span> Edwin E Binu. Built with a lot of coffee and a little eddy current.</p>
+    <div class="footer-links">
+      <a href="https://github.com/Eddycurrentz" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/eddycurrentz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://leetcode.com/edwin_emmanuel07" target="_blank" rel="noopener noreferrer">LeetCode</a>
+      <a href="mailto:edwinebinu07@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA LAYER
+   All customizable content lives here. In a Next.js/Astro build
+   these arrays become /data/*.ts and get imported into the
+   respective components (see IMPLEMENTATION_NOTES.md).
+   ============================================================ */
+
+const ROLES = ["Data Scientist", "AI/ML Engineer", "Big-Data Pipeline Builder", "Open Source Contributor"];
+
+const SKILLS = [
+  { category: "AI & Machine Learning", items: ["Python", "Spark MLlib", "Pandas", "R", "TextBlob", "Jupyter", "Power BI", "Google Colab"] },
+  { category: "Big Data & Streaming", items: ["Apache Spark", "Apache Kafka", "Apache Hadoop", "ZooKeeper"] },
+  { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "D3.js"] },
+  { category: "Backend & Databases", items: ["Node.js", "Express", "Flask", "MySQL", "MSSQL", "Firebase"] },
+  { category: "Languages", items: ["Python", "JavaScript/TypeScript", "C", "C++", "SQL"] },
+  { category: "Tooling", items: ["Git", "GitHub Actions", "Docker", "VS Code"] },
+];
+
+const PROJECTS = [
+  {
+    id: "cit-project",
+    title: "CIT-Project — COVID-19 Data Analysis",
+    desc: "End-to-end exploratory data analysis of pandemic case data: cleaning raw sources, engineering trend features, and visualizing outbreak patterns over time.",
+    outcome: "Turned raw case-count CSVs into a clear, explorable trend dashboard",
+    tags: ["Python", "Pandas", "Data Viz", "Jupyter"],
+    stars: null,
+    github: "https://github.com/Eddycurrentz/CIT-project",
+    demo: null,
+    caseStudy: {
+      sub: "Personal project · Python · Pandas · Matplotlib",
+      problem: "Public COVID-19 datasets are noisy and inconsistently formatted across sources, which makes it hard to answer basic questions like 'how is the trend actually moving in this region?' without a proper cleaning pass first.",
+      constraints: "Working solo with publicly available, frequently-updated CSVs meant designing a repeatable cleaning pipeline rather than a one-off script, and keeping the analysis reproducible in a notebook anyone could re-run.",
+      architecture: "diagram-etl",
+      results: [
+        "Built a repeatable clean → transform → visualize pipeline in Pandas",
+        "Produced time-series views of case growth and regional comparisons",
+        "[Add: specific metric, e.g. number of records processed or regions covered]",
+      ],
+    }
+  },
+  {
+    id: "ai-student-counsellor",
+    title: "AI Student Counsellor",
+    desc: "A prototype guidance tool that uses AI to help students think through academic and career decisions — an early exploration into applied conversational AI.",
+    outcome: "Prototype for guided, AI-assisted student decision-making",
+    tags: ["AI/ML", "HTML", "Prototype"],
+    stars: null,
+    github: "https://github.com/Eddycurrentz/ai-student-counsellor",
+    demo: null,
+    caseStudy: {
+      sub: "Prototype · AI-assisted guidance",
+      problem: "Students often lack accessible, low-pressure guidance when weighing academic or career paths — a first conversation with a counsellor can be a hard thing to get scheduled.",
+      constraints: "As an early prototype, the focus was on validating the interaction pattern (structured Q&A guiding toward a recommendation) rather than production-scale reliability.",
+      architecture: "diagram-agent",
+      results: [
+        "Validated a structured-question interaction flow for guidance use cases",
+        "Established a base to extend with a real LLM backend and persistence",
+        "[Add: user feedback, pilot results, or next steps once available]",
+      ],
+    }
+  },
+  {
+    id: "practice-series",
+    title: "Data Science Practice Series",
+    desc: "A running set of daily/weekly notebooks (day5--mini-project, day-7-idra …) used to drill exploratory data analysis, feature engineering and modeling fundamentals.",
+    outcome: "Consistent, repo-tracked practice reps on core data-science workflows",
+    tags: ["Jupyter Notebook", "Python", "EDA"],
+    stars: null,
+    github: "https://github.com/Eddycurrentz?tab=repositories",
+    demo: null,
+    caseStudy: {
+      sub: "Ongoing · Jupyter Notebook",
+      problem: "Data science skill compounds with reps, not theory alone — the goal was a low-friction way to practice the full loop (load → clean → explore → model) regularly and keep every attempt in version control.",
+      constraints: "Each notebook is scoped small enough to finish in a sitting, which trades project scope for consistency and iteration speed.",
+      architecture: "diagram-loop",
+      results: [
+        "Multiple notebooks committed covering EDA and mini-modeling tasks",
+        "Reusable notebook scaffolding for future practice sessions",
+        "[Add: a favorite notebook or technique you picked up along the way]",
+      ],
+    }
+  },
+];
+
+const EXPERIENCE = [
+  {
+    role: "Independent Data Science &amp; AI Projects",
+    org: "Self-directed",
+    dates: "Ongoing",
+    desc: "Building and shipping ML/data projects end-to-end — from Spark/Kafka pipelines to applied AI prototypes — and publishing the work on GitHub.",
+    tech: ["Python", "Apache Spark", "Kafka", "Pandas"],
+  },
+  {
+    role: "[Your role here]",
+    org: "[Company / Program name]",
+    dates: "[Start] — [End]",
+    desc: "Replace with a real role: what you owned, the team you worked with, and the systems you touched.",
+    tech: ["[tech]", "[tech]"],
+  },
+  {
+    role: "[Earlier role or education]",
+    org: "[Institution / Company]",
+    dates: "[Start] — [End]",
+    desc: "Use this slot for a degree, bootcamp, or earlier internship that's relevant to the story.",
+    tech: ["[tech]", "[tech]"],
+  },
+];
+
+/* ============================================================
+   RENDER: Skills
+   ============================================================ */
+const skillsRoot = document.getElementById('skillsCats');
+SKILLS.forEach(cat => {
+  const wrap = document.createElement('div');
+  const head = document.createElement('div');
+  head.className = 'skill-cat-head';
+  head.innerHTML = `<h3>${cat.category}</h3><span class="n">${cat.items.length} tools</span>`;
+  const grid = document.createElement('div');
+  grid.className = 'skill-grid';
+  cat.items.forEach(name => {
+    const chip = document.createElement('div');
+    chip.className = 'skill-chip';
+    const initials = name.replace(/[^A-Za-z0-9]/g,' ').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+    chip.innerHTML = `<div class="ic" aria-hidden="true">${initials}</div><div class="lbl">${name}</div>`;
+    grid.appendChild(chip);
+  });
+  wrap.appendChild(head);
+  wrap.appendChild(grid);
+  skillsRoot.appendChild(wrap);
+});
+
+/* ============================================================
+   RENDER: Project cards + case studies
+   ============================================================ */
+const projectGrid = document.getElementById('projectGrid');
+
+function projectMediaSvg(seed){
+  // Simple generative geometric "screenshot placeholder" per project — swap for real screenshots.
+  const hues = ['#FF8A3D','#34E4C8'];
+  return `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="4" y="4" width="192" height="122" rx="8" fill="none" stroke="${hues[seed%2]}" stroke-width="1.5" stroke-dasharray="3 5"/>
+    <circle cx="100" cy="65" r="34" fill="none" stroke="${hues[(seed+1)%2]}" stroke-width="1.5"/>
+    <circle cx="100" cy="65" r="20" fill="none" stroke="${hues[seed%2]}" stroke-width="1.5"/>
+    <circle cx="100" cy="65" r="6" fill="${hues[(seed+1)%2]}"/>
+  </svg>`;
+}
+
+PROJECTS.forEach((p, i) => {
+  const card = document.createElement('article');
+  card.className = 'project-card';
+  card.innerHTML = `
+    <div class="project-media">${projectMediaSvg(i)}</div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <h3>${p.title}</h3>
+        ${p.stars ? `<span class="stars"><svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 14.9 4.4 18.1l1.4-6.3L1 7.5l6.4-.6L10 1z"/></svg>${p.stars}</span>` : ''}
+      </div>
+      <p class="desc">${p.desc}</p>
+      <p class="project-outcome">${p.outcome}</p>
+      <div class="tag-row">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="project-links">
+        <a class="link-btn" href="${p.github}" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.39-5.26 5.67.41.36.78 1.07.78 2.16v3.2c0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+          Code
+        </a>
+        <button class="link-btn cs-open" data-id="${p.id}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5V6a2 2 0 0 1 2-2h9l5 5v10.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 4v5h5"/></svg>
+          Case study
+        </button>
+        ${p.demo ? `<a class="link-btn" href="${p.demo}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M10 14 20 4M19 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>Live demo</a>` : ''}
+      </div>
+    </div>`;
+  projectGrid.appendChild(card);
+});
+
+// placeholder "add your next project" card — visual affordance for extensibility
+const placeholder = document.createElement('article');
+placeholder.className = 'project-card placeholder';
+placeholder.innerHTML = `<div class="project-body">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="margin:0 auto 0.6rem;"><path d="M12 5v14M5 12h14"/></svg>
+  <p style="font-family:var(--font-mono); font-size:0.85rem;">Add your next project<br>to the PROJECTS array</p>
+</div>`;
+projectGrid.appendChild(placeholder);
+
+/* ---- Case study modal wiring ---- */
+const DIAGRAMS = {
+  'diagram-etl': `<svg viewBox="0 0 480 140" xmlns="http://www.w3.org/2000/svg">
+    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#8A96A8">
+      <rect x="10" y="45" width="90" height="50" rx="6" fill="none" stroke="#FF8A3D"/><text x="55" y="74" text-anchor="middle" fill="#E8EDF2">Raw CSV</text>
+      <path d="M100 70h40" stroke="#57647A" fill="none"/><path d="M136 65l6 5-6 5" stroke="#57647A" fill="none"/>
+      <rect x="146" y="45" width="90" height="50" rx="6" fill="none" stroke="#34E4C8"/><text x="191" y="66" text-anchor="middle" fill="#E8EDF2">Clean +</text><text x="191" y="80" text-anchor="middle" fill="#E8EDF2">Transform</text>
+      <path d="M236 70h40" stroke="#57647A" fill="none"/><path d="M272 65l6 5-6 5" stroke="#57647A" fill="none"/>
+      <rect x="282" y="45" width="90" height="50" rx="6" fill="none" stroke="#FF8A3D"/><text x="327" y="74" text-anchor="middle" fill="#E8EDF2">Features</text>
+      <path d="M372 70h40" stroke="#57647A" fill="none"/><path d="M408 65l6 5-6 5" stroke="#57647A" fill="none"/>
+      <rect x="418" y="45" width="54" height="50" rx="6" fill="none" stroke="#34E4C8"/><text x="445" y="74" text-anchor="middle" fill="#E8EDF2">Charts</text>
+    </g></svg>`,
+  'diagram-agent': `<svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
+    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#8A96A8">
+      <rect x="180" y="10" width="120" height="42" rx="8" fill="none" stroke="#34E4C8"/><text x="240" y="35" text-anchor="middle" fill="#E8EDF2">Student input</text>
+      <path d="M240 52v20" stroke="#57647A"/><path d="M235 68l5 6 5-6" stroke="#57647A" fill="none"/>
+      <rect x="150" y="80" width="180" height="42" rx="8" fill="none" stroke="#FF8A3D"/><text x="240" y="105" text-anchor="middle" fill="#E8EDF2">Guided question flow</text>
+      <path d="M240 122v20" stroke="#57647A"/><path d="M235 138l5 6 5-6" stroke="#57647A" fill="none"/>
+      <rect x="170" y="150" width="140" height="0" fill="none"/>
+      <text x="240" y="156" text-anchor="middle" fill="#8A96A8">↓ recommendation</text>
+    </g></svg>`,
+  'diagram-loop': `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#E8EDF2">
+      <circle cx="150" cy="80" r="60" fill="none" stroke="#FF8A3D" stroke-dasharray="4 6"/>
+      <text x="150" y="30" text-anchor="middle">Load</text>
+      <text x="220" y="80" text-anchor="middle">Explore</text>
+      <text x="150" y="135" text-anchor="middle">Model</text>
+      <text x="80" y="80" text-anchor="middle">Reflect</text>
+    </g></svg>`,
+};
+
+const csBackdrop = document.getElementById('csBackdrop');
+const csTitle = document.getElementById('csTitle');
+const csSub = document.getElementById('csSub');
+const csBody = document.getElementById('csBody');
+const csClose = document.getElementById('csClose');
+let lastFocused = null;
+
+function openCaseStudy(id){
+  const p = PROJECTS.find(x => x.id === id);
+  if(!p) return;
+  lastFocused = document.activeElement;
+  csTitle.textContent = p.title;
+  csSub.textContent = p.caseStudy.sub;
+  csBody.innerHTML = `
+    <div class="cs-block"><h4>Problem &amp; user context</h4><p>${p.caseStudy.problem}</p></div>
+    <div class="cs-block"><h4>Constraints &amp; tradeoffs</h4><p>${p.caseStudy.constraints}</p></div>
+    <div class="cs-block"><h4>Architecture / data flow</h4><div class="cs-diagram">${DIAGRAMS[p.caseStudy.architecture] || ''}</div></div>
+    <div class="cs-block"><h4>Results &amp; lessons learned</h4><ul>${p.caseStudy.results.map(r=>`<li>${r}</li>`).join('')}</ul></div>
+    <div class="cs-links">
+      <a class="link-btn" href="${p.github}" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+      ${p.demo ? `<a class="link-btn" href="${p.demo}" target="_blank" rel="noopener noreferrer">Live demo ↗</a>` : ''}
+    </div>`;
+  csBackdrop.setAttribute('data-open','true');
+  csClose.focus();
+  document.body.style.overflow = 'hidden';
+}
+function closeCaseStudy(){
+  csBackdrop.setAttribute('data-open','false');
+  document.body.style.overflow = '';
+  if(lastFocused) lastFocused.focus();
+}
+projectGrid.addEventListener('click', e => {
+  const btn = e.target.closest('.cs-open');
+  if(btn) openCaseStudy(btn.dataset.id);
+});
+csClose.addEventListener('click', closeCaseStudy);
+csBackdrop.addEventListener('click', e => { if(e.target === csBackdrop) closeCaseStudy(); });
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && csBackdrop.getAttribute('data-open') === 'true') closeCaseStudy();
+});
+
+/* ============================================================
+   RENDER: Experience timeline
+   ============================================================ */
+const tlRoot = document.getElementById('timeline');
+EXPERIENCE.forEach(item => {
+  const el = document.createElement('div');
+  el.className = 'tl-item';
+  el.innerHTML = `
+    <div class="tl-role-row"><h3>${item.role}</h3><span class="tl-dates">${item.dates}</span></div>
+    <p class="tl-org">${item.org}</p>
+    <p class="desc">${item.desc}</p>
+    <div class="tag-row">${item.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`;
+  tlRoot.appendChild(el);
+});
+
+/* ============================================================
+   TYPING EFFECT
+   ============================================================ */
+(function typeLoop(){
+  const el = document.getElementById('typeTarget');
+  let roleIdx = 0, charIdx = ROLES[0].length, deleting = true, hold = 0;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ el.textContent = ROLES[0]; return; }
+  function tick(){
+    const full = ROLES[roleIdx];
+    if(hold > 0){ hold--; return setTimeout(tick, 16); }
+    if(!deleting){
+      charIdx++;
+      el.textContent = full.slice(0, charIdx);
+      if(charIdx === full.length){ deleting = true; hold = 90; }
+    } else {
+      charIdx--;
+      el.textContent = full.slice(0, charIdx);
+      if(charIdx === 0){ deleting = false; roleIdx = (roleIdx+1) % ROLES.length; hold = 10; }
+    }
+    setTimeout(tick, deleting ? 35 : 65);
+  }
+  tick();
+})();
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.getAttribute('data-open') === 'true';
+  navLinks.setAttribute('data-open', String(!open));
+  navToggle.setAttribute('aria-expanded', String(!open));
+});
+navLinks.addEventListener('click', e => {
+  if(e.target.tagName === 'A'){
+    navLinks.setAttribute('data-open','false');
+    navToggle.setAttribute('aria-expanded','false');
+  }
+});
+
+/* ============================================================
+   CONTACT FORM (demo only — see IMPLEMENTATION_NOTES.md)
+   ============================================================ */
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const status = document.getElementById('formStatus');
+  status.dataset.state = 'ok';
+  status.textContent = 'Thanks — this is a demo form. Connect it to an email/API endpoint to go live.';
+  this.reset();
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
