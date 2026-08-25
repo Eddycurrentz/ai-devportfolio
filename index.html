@@ -1185,34 +1185,35 @@ navLinks.addEventListener('click', e => {
 });
 
 /* ============================================================
-   CONTACT FORM — Google Sheets Integration
+   CONTACT FORM — Formspree Integration
    ============================================================ */
 document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
   const status = document.getElementById('formStatus');
   const submitBtn = this.querySelector('button[type="submit"]');
   
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwl2uCGntqaj4swkwymOIRb_9TQOwB62ai2lzXklhaAzIUb91kT7Ee8qoiiTS439K1aDQ/exec';
-  
-  const formData = new FormData();
-  formData.append('name', document.getElementById('cf-name').value);
-  formData.append('email', document.getElementById('cf-email').value);
-  formData.append('message', document.getElementById('cf-message').value);
-  
   submitBtn.disabled = true;
   status.textContent = 'Sending...';
   status.dataset.state = '';
   
-  fetch(SCRIPT_URL, {
+  const formData = new FormData(this);
+  
+  fetch('https://formspree.io/f/xwledrrr', {
     method: 'POST',
     body: formData,
-    mode: 'no-cors'
+    headers: {
+      'Accept': 'application/json'
+    }
   })
-  .then(() => {
-    status.dataset.state = 'ok';
-    status.textContent = '✓ Message sent! Thanks for reaching out — I\'ll respond within 1–2 business days.';
-    document.getElementById('contactForm').reset();
-    submitBtn.disabled = false;
+  .then(response => {
+    if (response.ok) {
+      status.dataset.state = 'ok';
+      status.textContent = '✓ Message sent! Thanks for reaching out — I\'ll respond within 1–2 business days.';
+      document.getElementById('contactForm').reset();
+      submitBtn.disabled = false;
+    } else {
+      throw new Error('Form submission failed');
+    }
   })
   .catch(error => {
     status.dataset.state = 'error';
