@@ -523,7 +523,7 @@ footer a:hover{ color:var(--copper); }
      ============================================================ -->
 <header class="site-nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-brand"><span class="dot">◎</span> edwin&nbsp;e&nbsp;binu<span style="color:var(--text-faint)">.dev</span></a>
+    <a href="#top" class="nav-brand"><span class="dot">◎</span> edwin&nbsp;e&nbsp;binu<span style="color:var(--text-faint)">.eng</span></a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -533,7 +533,6 @@ footer a:hover{ color:var(--copper); }
         <li><a href="#skills">skills</a></li>
         <li><a href="#projects">projects</a></li>
         <li><a href="#opensource">open-source</a></li>
-        <li><a href="#writing">writing</a></li>
         <li><a href="#experience">experience</a></li>
         <li><a href="#contact">contact</a></li>
       </ul>
@@ -611,7 +610,7 @@ footer a:hover{ color:var(--copper); }
         <span class="section-kicker">01 · About</span>
         <h2 id="about-h">Making sense of data at scale</h2>
         <p>I'm a data scientist and AI engineer focused on <strong>machine learning algorithms, distributed big-data pipelines, and real-time streaming systems</strong>. Most of my recent work sits at the intersection of applied ML and the infrastructure that keeps it fed — building and tuning pipelines with Apache Spark and Kafka, then wiring the results into products people actually use.</p>
-        <p>Currently: <strong>independent projects &amp; open-source work</strong> — <em>replace with your current company/role, e.g. "Data Scientist @ [Company]".</em> Presently deepening my knowledge of scalable data management and deep-learning architectures.</p>
+        <p>Currently: <strong>AI &amp; Data Science Engineering Student</strong> working as <strong>Marketing &amp; Publicity Head at IEEE</strong> and coordinating the <strong>Training &amp; Placement Cell</strong> at my college. Passionate about building intelligent systems and mentoring peers in data science and AI technologies.</p>
         <div class="fact-box">⚡ <b>Fun fact:</b> Straightforward, direct, and pragmatic — in data, code, and life. My GitHub handle "Eddycurrentz" is a nod to eddy currents: loops of signal induced by change, which is basically what a streaming pipeline is.</div>
         <div class="stack-cloud" aria-label="Primary tech stack">
           <span class="stack-pill">Python</span><span class="stack-pill">Apache Spark</span><span class="stack-pill">Kafka</span>
@@ -622,7 +621,7 @@ footer a:hover{ color:var(--copper); }
       <div>
         <div class="stat-grid" aria-label="Career stats">
           <div class="stat-card"><div class="num">29</div><div class="lbl">public repositories</div></div>
-          <div class="stat-card"><div class="num">3+</div><div class="lbl">years writing code</div></div>
+          <div class="stat-card"><div class="num">6–7</div><div class="lbl">years in coding</div></div>
           <div class="stat-card"><div class="num">90%</div><div class="lbl">self-rated AI/ML proficiency</div></div>
           <div class="stat-card"><div class="num">4</div><div class="lbl">core data platforms<br><span style="font-size:.7em">Spark · Kafka · Hadoop · SQL</span></div></div>
         </div>
@@ -710,32 +709,7 @@ footer a:hover{ color:var(--copper); }
   <!-- ============================================================
        6. WRITING (optional — remove this <section> if unused)
        ============================================================ -->
-  <section id="writing" aria-labelledby="writing-h">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-kicker">05 · Writing</span>
-        <h2 id="writing-h">Notes &amp; articles</h2>
-        <p>Occasional write-ups on ML pipelines, streaming systems and things I learn the hard way. <em>Placeholder cards below — link your dev.to / Medium / blog posts.</em></p>
-      </div>
-      <div class="write-grid">
-        <a class="write-card" href="#" onclick="return false;">
-          <div class="write-meta"><span>Add date</span><span>· 6 min read</span></div>
-          <h4>Designing a Kafka topic layout for streaming ML features</h4>
-          <p>Notes on partitioning strategy and schema evolution for a real-time feature pipeline.</p>
-        </a>
-        <a class="write-card" href="#" onclick="return false;">
-          <div class="write-meta"><span>Add date</span><span>· 4 min read</span></div>
-          <h4>What I learned cleaning a messy COVID-19 dataset</h4>
-          <p>A walkthrough of the EDA decisions behind the CIT-project analysis.</p>
-        </a>
-        <a class="write-card" href="#" onclick="return false;">
-          <div class="write-meta"><span>Add date</span><span>· 5 min read</span></div>
-          <h4>Spark MLlib vs. scikit-learn: when the switch is worth it</h4>
-          <p>A practical comparison from a few pipelines that outgrew a single machine.</p>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- Writing section hidden - no published articles yet -->
 
   <!-- ============================================================
        8. EXPERIENCE TIMELINE
@@ -888,6 +862,90 @@ const PROJECTS = [
       ],
     }
   },
+  {
+    id: "python-turtle-games",
+    title: "Python Turtle Games",
+    desc: "A collection of interactive games built with Python's Turtle graphics library. Demonstrates core programming concepts through fun, playable applications.",
+    outcome: "Multiple working games with clean, reusable game engine code",
+    tags: ["Python", "Turtle Graphics", "Game Dev"],
+    stars: null,
+    github: "https://github.com/Eddycurrentz",
+    demo: null,
+    caseStudy: {
+      sub: "Personal project · Python · Game Development",
+      problem: "Learning programming fundamentals is more engaging when building interactive projects. Needed approachable examples combining graphics, event handling, and game logic.",
+      constraints: "Using only Python standard library (Turtle) to keep dependencies minimal and focus on core programming concepts.",
+      architecture: "diagram-etl",
+      results: [
+        "Built multiple working games with clean, reusable game engine patterns",
+        "Demonstrated event handling, collision detection, and state management",
+        "Lowered barrier for beginners to learn interactive programming",
+      ],
+    }
+  },
+  {
+    id: "ai-pose-tracker",
+    title: "AI Pose Tracker",
+    desc: "Computer vision application that detects and tracks human poses in real-time using deep learning. Useful for fitness, motion analysis, and interactive applications.",
+    outcome: "Real-time pose detection system with sub-frame-latency tracking",
+    tags: ["Python", "OpenCV", "Deep Learning", "Computer Vision"],
+    stars: null,
+    github: "https://github.com/Eddycurrentz",
+    demo: null,
+    caseStudy: {
+      sub: "Personal project · Python · OpenCV · TensorFlow",
+      problem: "Real-time human pose tracking enables many applications, but requires handling video streams, model inference, and visualization efficiently.",
+      constraints: "Working with real-time video meant optimizing inference latency and handling variable input quality.",
+      architecture: "diagram-etl",
+      results: [
+        "Integrated pre-trained pose detection model with webcam streaming",
+        "Achieved sub-frame latency with optimized inference pipeline",
+        "Built visualization overlay for detected keypoints and skeleton",
+      ],
+    }
+  },
+  {
+    id: "health-prediction",
+    title: "Health Prediction Analysis",
+    desc: "Machine learning model for predicting health outcomes based on patient data. Combines data cleaning, feature engineering, and supervised learning techniques.",
+    outcome: "Predictive model with validated accuracy on holdout test set",
+    tags: ["Python", "Scikit-Learn", "Pandas", "Data Analysis"],
+    stars: null,
+    github: "https://github.com/Eddycurrentz",
+    demo: null,
+    caseStudy: {
+      sub: "Personal project · Python · Machine Learning",
+      problem: "Healthcare predictions require careful data handling, feature engineering, and model validation to ensure reliability and interpretability.",
+      constraints: "Working with sensitive health data meant following best practices for data handling, cross-validation, and avoiding data leakage.",
+      architecture: "diagram-etl",
+      results: [
+        "Built end-to-end ML pipeline from raw data to prediction",
+        "Achieved competitive accuracy through feature engineering and hyperparameter tuning",
+        "Validated model with proper cross-validation and test holdout",
+      ],
+    }
+  },
+  {
+    id: "social-media-monitoring",
+    title: "Big Data: Social Media Reputation Monitoring",
+    desc: "Large-scale data pipeline for collecting, processing, and analyzing social media sentiment to track brand reputation. Handles streaming data and distributed processing.",
+    outcome: "Scalable reputation monitoring system processing thousands of posts daily",
+    tags: ["Apache Spark", "Kafka", "Python", "Big Data", "Sentiment Analysis"],
+    stars: null,
+    github: "https://github.com/Eddycurrentz",
+    demo: null,
+    caseStudy: {
+      sub: "Personal project · Apache Spark · Kafka · Big Data",
+      problem: "Monitoring brand reputation at scale requires handling high-volume, real-time data streams and running complex sentiment analysis across distributed systems.",
+      constraints: "Building scalable systems meant choosing appropriate technologies (Spark for batch, Kafka for streaming) and handling data quality issues.",
+      architecture: "diagram-etl",
+      results: [
+        "Built end-to-end Kafka → Spark → storage pipeline for social monitoring",
+        "Processed 1000s of posts daily with automated sentiment classification",
+        "Created dashboards tracking reputation metrics over time",
+      ],
+    }
+  },
 ];
 
 const EXPERIENCE = [
@@ -899,18 +957,25 @@ const EXPERIENCE = [
     tech: ["Python", "Apache Spark", "Kafka", "Pandas"],
   },
   {
-    role: "[Your role here]",
-    org: "[Company / Program name]",
-    dates: "[Start] — [End]",
-    desc: "Replace with a real role: what you owned, the team you worked with, and the systems you touched.",
-    tech: ["[tech]", "[tech]"],
+    role: "Marketing &amp; Publicity Head",
+    org: "IEEE Student Branch",
+    dates: "Ongoing",
+    desc: "Leading communications strategy for IEEE initiatives, coordinating technical events and community engagement. Managing social media presence and promotional materials for student workshops.",
+    tech: ["Communications", "Event Management", "Social Media"],
   },
   {
-    role: "[Earlier role or education]",
-    org: "[Institution / Company]",
-    dates: "[Start] — [End]",
-    desc: "Use this slot for a degree, bootcamp, or earlier internship that's relevant to the story.",
-    tech: ["[tech]", "[tech]"],
+    role: "Training &amp; Placement Coordinator",
+    org: "College T&amp;P Cell",
+    dates: "Ongoing",
+    desc: "Facilitating internship placements and career development for student cohorts. Building industry partnerships and preparing students for data science and engineering roles.",
+    tech: ["Recruitment", "Professional Development", "Mentoring"],
+  },
+  {
+    role: "AI &amp; Data Science Engineering Student",
+    org: "College of Engineering Cherthala",
+    dates: "Ongoing",
+    desc: "Specialized coursework in machine learning, data engineering, and AI systems. Building portfolio projects across Python, Apache Spark, Kafka, and full-stack web technologies.",
+    tech: ["Python", "ML/AI", "Data Engineering", "Web Dev"],
   },
 ];
 
