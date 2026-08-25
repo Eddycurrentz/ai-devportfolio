@@ -759,7 +759,7 @@ footer a:hover{ color:var(--copper); }
           </div>
           <button class="btn btn-primary" type="submit" style="align-self:flex-start;">Send message</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          <p class="form-note" id="formNote">Demo form — wire this up to an API route, Formspree, or your email provider of choice before deploying (see implementation notes).</p>
+          <p class="form-note" id="formNote">Form responses are saved to a Google Sheet. Replace SCRIPT_URL in the contact form code with your Google Apps Script deployment URL to activate.</p>
         </form>
       </div>
     </div>
@@ -1185,14 +1185,43 @@ navLinks.addEventListener('click', e => {
 });
 
 /* ============================================================
-   CONTACT FORM (demo only — see IMPLEMENTATION_NOTES.md)
+   CONTACT FORM — Google Sheets Integration
    ============================================================ */
 document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
   const status = document.getElementById('formStatus');
-  status.dataset.state = 'ok';
-  status.textContent = 'Thanks — this is a demo form. Connect it to an email/API endpoint to go live.';
-  this.reset();
+  const submitBtn = this.querySelector('button[type="submit"]');
+  
+  // Replace with your Google Apps Script deployment URL
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwl2uCGntqaj4swkwymOIRb_9TQOwB62ai2lzXklhaAzIUb91kT7Ee8qoiiTS439K1aDQ/exec';
+  
+  const formData = {
+    name: document.getElementById('cf-name').value,
+    email: document.getElementById('cf-email').value,
+    message: document.getElementById('cf-message').value
+  };
+  
+  submitBtn.disabled = true;
+  status.textContent = 'Sending...';
+  status.dataset.state = '';
+  
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: new URLSearchParams(formData),
+  })
+  .then(response => response.json())
+  .then(data => {
+    status.dataset.state = 'ok';
+    status.textContent = '✓ Message sent! Thanks for reaching out — I\'ll respond within 1–2 business days.';
+    this.reset();
+    submitBtn.disabled = false;
+  })
+  .catch(error => {
+    status.dataset.state = 'error';
+    status.textContent = '✗ Something went wrong. Try emailing edwinebinu07@gmail.com directly.';
+    submitBtn.disabled = false;
+    console.error('Error:', error);
+  });
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
