@@ -1192,14 +1192,12 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   const status = document.getElementById('formStatus');
   const submitBtn = this.querySelector('button[type="submit"]');
   
-  // Replace with your Google Apps Script deployment URL
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwl2uCGntqaj4swkwymOIRb_9TQOwB62ai2lzXklhaAzIUb91kT7Ee8qoiiTS439K1aDQ/exec';
   
-  const formData = {
-    name: document.getElementById('cf-name').value,
-    email: document.getElementById('cf-email').value,
-    message: document.getElementById('cf-message').value
-  };
+  const formData = new FormData();
+  formData.append('name', document.getElementById('cf-name').value);
+  formData.append('email', document.getElementById('cf-email').value);
+  formData.append('message', document.getElementById('cf-message').value);
   
   submitBtn.disabled = true;
   status.textContent = 'Sending...';
@@ -1207,13 +1205,13 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   
   fetch(SCRIPT_URL, {
     method: 'POST',
-    body: new URLSearchParams(formData),
+    body: formData,
+    mode: 'no-cors'
   })
-  .then(response => response.json())
-  .then(data => {
+  .then(() => {
     status.dataset.state = 'ok';
     status.textContent = '✓ Message sent! Thanks for reaching out — I\'ll respond within 1–2 business days.';
-    this.reset();
+    document.getElementById('contactForm').reset();
     submitBtn.disabled = false;
   })
   .catch(error => {
