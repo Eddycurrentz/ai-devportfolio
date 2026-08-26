@@ -19,6 +19,7 @@ const SKILLS = [
 const PROJECTS = [
   {
     id: "cit-project",
+    image: "citproject.png",
     title: "CIT-Project — COVID-19 Data Analysis",
     desc: "End-to-end exploratory data analysis of pandemic case data: cleaning raw sources, engineering trend features, and visualizing outbreak patterns over time.",
     outcome: "Turned raw case-count CSVs into a clear, explorable trend dashboard",
@@ -40,6 +41,7 @@ const PROJECTS = [
   },
   {
     id: "ai-student-counsellor",
+    image: "studentcounseller.png",
     title: "AI Student Counsellor",
     desc: "A prototype guidance tool that uses AI to help students think through academic and career decisions — an early exploration into applied conversational AI.",
     outcome: "Prototype for guided, AI-assisted student decision-making",
@@ -61,6 +63,7 @@ const PROJECTS = [
   },
   {
     id: "practice-series",
+    image: "datasciencepractice.png",
     title: "Data Science Practice Series",
     desc: "A running set of daily/weekly notebooks (day5--mini-project, day-7-idra …) used to drill exploratory data analysis, feature engineering and modeling fundamentals.",
     outcome: "Consistent, repo-tracked practice reps on core data-science workflows",
@@ -82,6 +85,7 @@ const PROJECTS = [
   },
   {
     id: "python-turtle-games",
+    image: "turtlegames.png",
     title: "Python Turtle Games",
     desc: "A collection of interactive games built with Python's Turtle graphics library. Demonstrates core programming concepts through fun, playable applications.",
     outcome: "Multiple working games with clean, reusable game engine code",
@@ -103,6 +107,7 @@ const PROJECTS = [
   },
   {
     id: "ai-pose-tracker",
+    image: "posetracker.png",
     title: "AI Pose Tracker",
     desc: "Computer vision application that detects and tracks human poses in real-time using deep learning. Useful for fitness, motion analysis, and interactive applications.",
     outcome: "Real-time pose detection system with sub-frame-latency tracking",
@@ -124,6 +129,7 @@ const PROJECTS = [
   },
   {
     id: "health-prediction",
+    image: "healthprediction.png",
     title: "Health Prediction Analysis",
     desc: "Machine learning model for predicting health outcomes based on patient data. Combines data cleaning, feature engineering, and supervised learning techniques.",
     outcome: "Predictive model with validated accuracy on holdout test set",
@@ -145,12 +151,13 @@ const PROJECTS = [
   },
   {
     id: "social-media-monitoring",
+    image: "bdaproject.jpg",
     title: "Big Data: Social Media Reputation Monitoring",
     desc: "Large-scale data pipeline for collecting, processing, and analyzing social media sentiment to track brand reputation. Handles streaming data and distributed processing.",
     outcome: "Scalable reputation monitoring system processing thousands of posts daily",
     tags: ["Apache Spark", "Kafka", "Python", "Big Data", "Sentiment Analysis"],
     stars: null,
-    github: "https://github.com/Eddycurrentz",
+    github: "https://github.com/Eddycurrentz/bda-project",
     demo: null,
     caseStudy: {
       sub: "Personal project · Apache Spark · Kafka · Big Data",
@@ -228,21 +235,13 @@ function renderSkills() {
 function renderProjects() {
   const projectGrid = document.getElementById('projectGrid');
 
-  function projectMediaSvg(seed){
-    const hues = ['#FF8A3D','#34E4C8'];
-    return `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="4" y="4" width="192" height="122" rx="8" fill="none" stroke="${hues[seed%2]}" stroke-width="1.5" stroke-dasharray="3 5"/>
-      <circle cx="100" cy="65" r="34" fill="none" stroke="${hues[(seed+1)%2]}" stroke-width="1.5"/>
-      <circle cx="100" cy="65" r="20" fill="none" stroke="${hues[seed%2]}" stroke-width="1.5"/>
-      <circle cx="100" cy="65" r="6" fill="${hues[(seed+1)%2]}"/>
-    </svg>`;
-  }
-
-  PROJECTS.forEach((p, i) => {
+  PROJECTS.forEach(p => {
     const card = document.createElement('article');
     card.className = 'project-card';
     card.innerHTML = `
-      <div class="project-media">${projectMediaSvg(i)}</div>
+      <div class="project-media">
+        <img src="${p.image}" alt="Screenshot of ${p.title}" loading="lazy">
+      </div>
       <div class="project-body">
         <div class="project-title-row">
           <h3>${p.title}</h3>
@@ -266,13 +265,6 @@ function renderProjects() {
     projectGrid.appendChild(card);
   });
 
-  const placeholder = document.createElement('article');
-  placeholder.className = 'project-card placeholder';
-  placeholder.innerHTML = `<div class="project-body">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="margin:0 auto 0.6rem;"><path d="M12 5v14M5 12h14"/></svg>
-    <p style="font-family:var(--font-mono); font-size:0.85rem;">Add your next project<br>to the PROJECTS array</p>
-  </div>`;
-  projectGrid.appendChild(placeholder);
 }
 
 /* ---- Case study modal wiring ---- */

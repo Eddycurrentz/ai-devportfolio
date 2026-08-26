@@ -38,6 +38,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -58,6 +59,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 img {
@@ -710,19 +712,39 @@ section + section {
 
 .project-media {
   aspect-ratio: 16/10;
-  background: linear-gradient(135deg, var(--bg-panel-2), var(--bg));
+  background: var(--bg-panel-2);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-bottom: 1px solid var(--line);
   overflow: hidden;
 }
 
-.project-media svg {
-  width: 64%;
-  height: 64%;
-  opacity: 0.9;
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.35s ease;
+}
+
+.project-card:nth-child(-n+3) .project-media img {
+  transform: scale(1.14);
+  transform-origin: center top;
+}
+
+.project-card:nth-child(2) .project-media img {
+  transform: scale(1.34);
+}
+
+.project-card:hover .project-media img {
+  transform: scale(1.035);
+}
+
+.project-card:nth-child(-n+3):hover .project-media img {
+  transform: scale(1.18);
+}
+
+.project-card:nth-child(2):hover .project-media img {
+  transform: scale(1.38);
 }
 
 .project-body {
@@ -828,19 +850,6 @@ section + section {
 .link-btn svg {
   width: 14px;
   height: 14px;
-}
-
-.project-card.placeholder {
-  border-style: dashed;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--text-faint);
-}
-
-.project-card.placeholder .project-body {
-  align-items: center;
-  justify-content: center;
 }
 
 /* ============================================================
