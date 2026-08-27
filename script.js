@@ -12,7 +12,7 @@ const SKILLS = [
   { category: "Big Data & Streaming", items: ["Apache Spark", "Apache Kafka", "Apache Hadoop", "ZooKeeper"] },
   { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "D3.js"] },
   { category: "Backend & Databases", items: ["Node.js", "Express", "Flask", "MySQL", "MSSQL", "Firebase"] },
-  { category: "Languages", items: ["Python", "JavaScript/TypeScript", "C", "C++", "SQL"] },
+  { category: "Languages", items: ["Python", "JavaScript", "TypeScript", "C", "C++", "SQL"] },
   { category: "Tooling", items: ["Git", "GitHub Actions", "Docker", "VS Code"] },
 ];
 
@@ -87,21 +87,21 @@ const PROJECTS = [
     id: "python-turtle-games",
     image: "turtlegames.png",
     title: "Python Turtle Games",
-    desc: "A collection of interactive games built with Python's Turtle graphics library. Demonstrates core programming concepts through fun, playable applications.",
-    outcome: "Multiple working games with clean, reusable game engine code",
-    tags: ["Python", "Turtle Graphics", "Game Dev"],
+    desc: "A revived collection of five mouse- and keyboard-controlled games built with Python's standard-library Turtle module: Battleship, Chess, Flappy Bird, Ping Pong, and Snake.",
+    outcome: "Five playable desktop games with no third-party dependencies",
+    tags: ["Python", "Turtle Graphics", "Game Dev", "Standard Library"],
     stars: null,
-    github: "https://github.com/Eddycurrentz",
+    github: "https://github.com/Eddycurrentz/turtle-games-",
     demo: null,
     caseStudy: {
-      sub: "Personal project · Python · Game Development",
-      problem: "Learning programming fundamentals is more engaging when building interactive projects. Needed approachable examples combining graphics, event handling, and game logic.",
-      constraints: "Using only Python standard library (Turtle) to keep dependencies minimal and focus on core programming concepts.",
-      architecture: "diagram-etl",
+      sub: "Personal project · Python Turtle · Desktop games",
+      problem: "Interactive projects make programming fundamentals tangible. This collection revisits school-day Turtle games with updated presentation while keeping the code approachable and dependency-free.",
+      constraints: "Every game runs locally with Python's standard library. The collection combines different control models, from mouse-click board interaction to real-time keyboard game loops.",
+      architecture: "diagram-turtle",
       results: [
-        "Built multiple working games with clean, reusable game engine patterns",
-        "Demonstrated event handling, collision detection, and state management",
-        "Lowered barrier for beginners to learn interactive programming",
+        "Built five games: Battleship, Chess, Flappy Bird, Ping Pong, and Snake",
+        "Implemented mouse input, keyboard controls, collision detection, and game-state handling",
+        "Kept setup to a single command per game, for example: python battleship_game.py",
       ],
     }
   },
@@ -296,6 +296,16 @@ function setupCaseStudies() {
         <text x="220" y="80" text-anchor="middle">Explore</text>
         <text x="150" y="135" text-anchor="middle">Model</text>
         <text x="80" y="80" text-anchor="middle">Reflect</text>
+      </g></svg>`,
+    'diagram-turtle': `<svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
+      <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#8A96A8">
+        <rect x="12" y="55" width="98" height="50" rx="6" fill="none" stroke="#34E4C8"/><text x="61" y="84" text-anchor="middle" fill="#E8EDF2">Input</text>
+        <path d="M110 80h34" stroke="#57647A" fill="none"/><path d="M140 75l6 5-6 5" stroke="#57647A" fill="none"/>
+        <rect x="150" y="55" width="112" height="50" rx="6" fill="none" stroke="#FF8A3D"/><text x="206" y="84" text-anchor="middle" fill="#E8EDF2">Game state</text>
+        <path d="M262 80h34" stroke="#57647A" fill="none"/><path d="M292 75l6 5-6 5" stroke="#57647A" fill="none"/>
+        <rect x="302" y="55" width="92" height="50" rx="6" fill="none" stroke="#34E4C8"/><text x="348" y="84" text-anchor="middle" fill="#E8EDF2">Turtle UI</text>
+        <path d="M394 80h34" stroke="#57647A" fill="none"/><path d="M424 75l6 5-6 5" stroke="#57647A" fill="none"/>
+        <rect x="434" y="55" width="34" height="50" rx="6" fill="none" stroke="#FF8A3D"/><text x="451" y="78" text-anchor="middle" fill="#E8EDF2">Win</text><text x="451" y="92" text-anchor="middle" fill="#E8EDF2">/ lose</text>
       </g></svg>`,
   };
 
